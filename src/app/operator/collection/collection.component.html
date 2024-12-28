@@ -1,0 +1,24 @@
+<section class="collection-wrapper">
+    <h1>Collection Form</h1>
+    <div class="fields">
+        <div class="row">
+            <mat-form-field class="example-full-width">
+                <mat-label>Vr. Date</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Current Reading No</mat-label>
+                <input matInput type="number" placeholder="Enter Indent Number">
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field>
+                <mat-label>Product</mat-label>
+                <input matInput placeholder="Enter Product">
+            </mat-form-field>
+        </div>
+    </div>
+    <button mat-flat-button color="warn">Save</button>
+</section>

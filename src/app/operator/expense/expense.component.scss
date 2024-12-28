@@ -1,0 +1,38 @@
+.expense-wrapper {
+    padding: 20px;
+
+    h1 {
+        text-align: center;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        h4 {
+            font-size: 26px;
+        }
+
+        div {
+            span {
+                font-size: 26px;
+                font-weight: bolder;
+            }
+        }
+    }
+
+    .fields {
+        width: 100%;
+
+        .row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            mat-form-field {
+                width: 100%;
+            }
+        }
+    }
+}

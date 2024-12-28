@@ -1,0 +1,22 @@
+<section class="loagin-wrapper">
+    <ng-container *ngIf="isLoading; else loginTemplate">
+        <img src="../../../assets/refuel.gif" class="loader" alt="loader">
+    </ng-container>
+    <ng-template #loginTemplate>
+        <div class="left">
+            <img src="https://img.freepik.com/free-vector/automobile-van-park-filling-up-fuel-station_1150-43136.jpg?t=st=1733208168~exp=1733211768~hmac=3f566771fe5b392b7c383e27a384fe8422d1a7486ef628dfbebeaad6f1cb2bf2&w=996" alt="login-hero">
+        </div>
+        <div class="right">
+            <h2>HKFA Fuel Station</h2>
+            <mat-form-field>
+                <mat-label>Username</mat-label>
+                <input matInput placeholder="Enter Username">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="Enter Password">
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="handleLogin()">Submit</button>
+        </div>
+    </ng-template>
+</section>

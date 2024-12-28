@@ -1,0 +1,35 @@
+<section class="fuel-list-wrappper">
+    <h1>Welcome, <span>Admin</span></h1>
+    <div class="fuel-pump-grid">
+        <mat-card class="fuel-pump-tile" *ngFor="let pump of pumps">
+            <mat-card-header>
+                <div class="pump-options" [ngClass]="pump.status">
+                    <mat-icon [matMenuTriggerFor]="menu">
+                        more_horiz
+                    </mat-icon>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="handleRoute('credit', pump)">Cr.Sales</button>
+                        <button mat-menu-item (click)="handleRoute('expense', pump)">Expense</button>
+                        <button mat-menu-item (click)="handleRoute('collection', pump)">Collection</button>
+                    </mat-menu>
+                </div>
+            </mat-card-header>
+            <mat-card-content>
+                <div class="pump-status" [ngClass]="pump.status">
+                    <mat-icon [color]="pump.status === 'close' ? 'accent': 'primary'" (click)="hanldeActionRoute(pump)">
+                        {{ pump.status === 'close' ? 'block' :'download_done'  }}
+                    </mat-icon>
+                </div>
+                <div class="pump-info">
+                    <div>
+                        <mat-icon>local_gas_station</mat-icon>
+                        <h3>{{ pump.pumpno }}</h3>
+                    </div>
+                    <p>Type: {{ pump.partdesc }}</p>
+                    <p>Reading: {{ pump.reading.toFixed(2) }}</p>
+                    <button *ngIf="isAdmin" mat-flat-button color="primary" (click)="handleAssignPump(pump)">Assign</button>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</section>
