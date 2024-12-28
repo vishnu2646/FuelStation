@@ -1,11 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { Ipump } from '../types';
 import { Router, RouterModule } from '@angular/router';
+import { IDashboardTableData } from '../../Type/Type';
 
 @Component({
     selector: 'app-pump-list',
@@ -24,62 +24,20 @@ import { Router, RouterModule } from '@angular/router';
 export class PumpListComponent {
     private router = inject(Router);
 
-    public pumps: Ipump[] = [
-        {
-            "pumpno": "GVR2 B2",
-            "partdesc": "DIESEL",
-            "reading": 350864,
-            "operator": "open",
-            "status": "open",
-        },
-        {
-            "pumpno": "GVR2 B1",
-            "partdesc": "DIESEL",
-            "reading": 307006,
-            "operator": "open",
-            "status": "open",
-        },
-        {
-            "pumpno": "GVR2 A2",
-            "partdesc": "PETROL",
-            "reading": 263148,
-            "operator": "Govindh",
-            "status": "open",
-        },
-        {
-            "pumpno": "GVR2 A1",
-            "partdesc": "PETROL",
-            "reading": 219290,
-            "operator": "open",
-            "status": "open",
-        },
-        {
-            "pumpno": "GVR1 B2",
-            "partdesc": "DIESEL",
-            "reading": 175432,
-            "operator": "open",
-            "status": "close",
-        },
-        {
-            "pumpno": "GVR1 B1",
-            "partdesc": "DIESEL",
-            "reading": 131574,
-            "operator": "open",
-            "status": "close"
-        }
-    ];
+    @Input()
+    public pumps: IDashboardTableData[] = [];
 
     public isAdmin: boolean = true;
 
-    public handleAssignPump(pump: Ipump) {
+    public handleAssignPump(pump: any) {
         console.log(pump);
     }
 
-    public hanldeActionRoute(pump: Ipump) {
+    public hanldeActionRoute(pump: any) {
         this.router.navigate(['/action', pump.pumpno, pump.status])
     }
 
-    public handleRoute(route: String,pump: Ipump) {
+    public handleRoute(route: String,pump: any) {
         switch(route) {
             case ('credit'):
                 this.router.navigate(['/pages/credit', pump.pumpno]);
