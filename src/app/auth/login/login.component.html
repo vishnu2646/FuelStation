@@ -10,11 +10,11 @@
             <h2>HKFA Fuel Station</h2>
             <mat-form-field>
                 <mat-label>Username</mat-label>
-                <input matInput placeholder="Enter Username">
+                <input matInput placeholder="Enter Username" [(ngModel)]="user.UserName" name="Username"  >
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Password</mat-label>
-                <input matInput placeholder="Enter Password">
+                <input matInput placeholder="Enter Password"  [(ngModel)]="user.Userpwd" name="Password">
             </mat-form-field>
             <button mat-raised-button color="primary" (click)="handleLogin()">Submit</button>
         </div>
