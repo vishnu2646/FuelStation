@@ -32,6 +32,8 @@ export class ActionComponent implements OnInit {
 
     public pumpNo: String = '';
 
+    public product: String = '';
+
     public isClosing: boolean = false;
 
     public operatorsList: any[] = [];
@@ -49,9 +51,11 @@ export class ActionComponent implements OnInit {
 
     public ngOnInit() {
         this.handleGetUserData();
-        const { itemid, pumpid, OpReading, Rate } = history.state.pump;
+        const { itemid, pumpid, OpReading, Rate, PumpNo, partno } = history.state.pump;
         const { action } = history.state;
         this.actionType = action;
+        this.pumpNo = PumpNo;
+        this.product = partno;
         if(action === 'Close') {
             this.isClosing = !this.isClosing;
         }
