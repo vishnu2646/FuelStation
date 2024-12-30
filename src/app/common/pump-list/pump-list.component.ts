@@ -5,7 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { Router, RouterModule } from '@angular/router';
-import { IDashboardTableData } from '../../Type/Type';
+import { IDashboardTableData } from '../../types/types';
 
 @Component({
     selector: 'app-pump-list',
@@ -34,19 +34,19 @@ export class PumpListComponent {
     }
 
     public hanldeActionRoute(pump: any) {
-        this.router.navigate(['/action', pump.pumpno, pump.status])
+        this.router.navigate(['/action', pump.PumpNo, pump.Status])
     }
 
     public handleRoute(route: String,pump: any) {
         switch(route) {
             case ('credit'):
-                this.router.navigate(['/pages/credit', pump.pumpno]);
+                this.router.navigate(['/pages/credit', pump.PumpNo]);
                 break;
             case ('expense'):
-                this.router.navigate(['/pages/expense', pump.pumpno]);
+                this.router.navigate(['/pages/expense', pump.PumpNo]);
                 break;
             case ('collection'):
-                this.router.navigate(['/pages/collection', pump.pumpno]);
+                this.router.navigate(['/pages/collection', pump.PumpNo]);
                 break;
             default:
                 this.router.navigate(['/admin']);

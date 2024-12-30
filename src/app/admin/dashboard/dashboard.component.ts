@@ -2,7 +2,7 @@ import { Component ,Inject, inject } from '@angular/core';
 import { PumpListComponent } from "../../common/pump-list/pump-list.component";
 import { MatIconModule } from '@angular/material/icon';
 import { AdminService } from '../admin.service';
-import { IDashboardTableData } from '../../Type/Type';
+import { IDashboardTableData } from '../../types/types';
 
 @Component({
     selector: 'app-dashboard',
@@ -20,17 +20,15 @@ export class DashboardComponent {
     private AdminService = inject(AdminService);
     public tableDatas: IDashboardTableData[] = [];
     public isDashboardLoading: boolean = false;
-    public Userid=1;
-
+ 
     public ngOnInit() {
         this.handleGetDashboardData();
-         
+
     }
-    
     private handleGetDashboardData() {
         this.isDashboardLoading = !this.isDashboardLoading;
     
-        this.AdminService.getDashboardService(this.Userid).subscribe({
+        this.AdminService.getDashboardService().subscribe({
             next: (response) => {
                 this.tableDatas = response.GetPumpList.Table;
             },
