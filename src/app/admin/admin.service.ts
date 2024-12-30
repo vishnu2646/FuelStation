@@ -23,7 +23,5 @@ export class AdminService {
 
         return this.httpClient.get<IDashboard>(`${this.baseUrl}/GetPumpList?UsrId=${getUsrid}&databaseKey=${this.databaseKey}`)
     }
-
-    constructor() { }
 }
 
