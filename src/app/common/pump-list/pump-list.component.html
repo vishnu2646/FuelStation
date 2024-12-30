@@ -11,13 +11,14 @@
                         <button mat-menu-item (click)="handleRoute('credit', pump)">Cr.Sales</button>
                         <button mat-menu-item (click)="handleRoute('expense', pump)">Expense</button>
                         <button mat-menu-item (click)="handleRoute('collection', pump)">Collection</button>
+                        <button mat-menu-item (click)="hanldeActionRoute(pump)" [disabled]="pump.Status === 'Open' ? false : true">Close</button>
                     </mat-menu>
                 </div>
             </mat-card-header>
             <mat-card-content>
                 <div class="pump-status" [ngClass]="pump.Status">
-                    <mat-icon [color]="pump.Status === 'close' ? 'accent': 'primary'" (click)="hanldeActionRoute(pump)">
-                        {{ pump.Status === 'close' ? 'block' :'download_done'  }}
+                    <mat-icon [color]="pump.Status === 'Open' ? 'accent' : 'primary'">
+                        {{ pump.Status === 'Open' ? 'download_done' :'block'  }}
                     </mat-icon>
                 </div>
                 <div class="pump-info">
@@ -27,7 +28,8 @@
                     </div>
                     <p>Type: {{ pump.partno }}</p>
                     <p>Reading: {{ pump.OpReading }}</p>
-                    <button *ngIf="isAdmin" mat-flat-button color="primary" (click)="handleAssignPump(pump)">Assign</button>
+                    <button *ngIf="pump.Status === 'Open'" mat-flat-button color="primary" [disabled]="true">{{ pump.OperatorName }}</button>
+                    <button *ngIf="pump.Status !== 'Open'" mat-flat-button color="primary" (click)="handleAssignPump(pump)">Assign</button>
                 </div>
             </mat-card-content>
         </mat-card>

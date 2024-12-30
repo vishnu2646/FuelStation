@@ -7,34 +7,46 @@
     <div class="fields">
         <div class="row">
             <mat-form-field>
+                <mat-label>Select Operator</mat-label>
+                <mat-select
+                    (selectionChange)="handleSelectionChange($event)"
+                >
+                    @for(operator of operatorsList; track $index) {
+                        <mat-option [value]="operator.Eid">{{ operator.EmpName }}</mat-option>
+                    }
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field>
                 <mat-label>Opening Reading</mat-label>
-                <input matInput type="number" [disabled]="true"  placeholder="Enter Opening Reading">
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Closing Reading</mat-label>
-                <input matInput type="number" placeholder="Enter Closing Reading">
+                <input matInput type="number" [disabled]="true" [(ngModel)]="openPumpDetails.OpenReading"  placeholder="Enter Opening Reading">
             </mat-form-field>
         </div>
-        <div class="row">
-            <mat-form-field>
-                <mat-label>Quantity</mat-label>
-                <input matInput type="number" [disabled]="true" placeholder="Enter Quantity">
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Rate</mat-label>
-                <input matInput type="number" [disabled]="true" placeholder="Enter Rate">
-            </mat-form-field>
-        </div>
-        <div class="row">
-            <mat-form-field>
-                <mat-label>Sales</mat-label>
-                <input matInput type="number" [disabled]="true" placeholder="Enter Sales">
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Balance</mat-label>
-                <input matInput type="number" [disabled]="true" placeholder="Enter Sales">
-            </mat-form-field>
-        </div>
+        @if(isClosing) {
+            <div class="row">
+                <mat-form-field>
+                    <mat-label>Closing Reading</mat-label>
+                    <input matInput type="number" placeholder="Enter Closing Reading">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Quantity</mat-label>
+                    <input matInput type="number" placeholder="Enter Quantity">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Rate</mat-label>
+                    <input matInput type="number" [(ngModel)]="openPumpDetails.Rate" [disabled]="true" placeholder="Enter Rate">
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field>
+                    <mat-label>Sales</mat-label>
+                    <input matInput type="number" [disabled]="true" placeholder="Enter Sales">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Balance</mat-label>
+                    <input matInput type="number" [disabled]="true" placeholder="Enter Sales">
+                </mat-form-field>
+            </div>
+        }
     </div>
-    <button mat-flat-button color="accent">Save</button>
+    <button mat-flat-button color="accent" (click)="savePumpDetails()">Save</button>
 </section>

@@ -23,7 +23,7 @@ export const routes: Routes = [
         component: DashboardComponent,
     },
     {
-        path: 'action/:pumpno/:action',
+        path: 'action',
         component: ActionComponent
     },
     {

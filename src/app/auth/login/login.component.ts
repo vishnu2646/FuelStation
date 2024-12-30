@@ -54,9 +54,5 @@ export class LoginComponent {
             }
         })
 
-        // setTimeout(() => {
-        //     this.isLoading = !this.isLoading;
-        //     this.router.navigate(['/admin']);
-        // }, 5000);
     }
 }

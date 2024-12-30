@@ -27,17 +27,23 @@ export class PumpListComponent {
     @Input()
     public pumps: IDashboardTableData[] = [];
 
-    public isAdmin: boolean = true;
-
-    public handleAssignPump(pump: any) {
-        console.log(pump);
+    public handleAssignPump(pump: IDashboardTableData) {
+        if(pump.Status === 'Closed') {
+            this.router.navigateByUrl('/action', {state: {pump: pump, action: 'Open'}})
+        }
     }
 
-    public hanldeActionRoute(pump: any) {
-        this.router.navigate(['/action', pump.PumpNo, pump.Status])
+    public hanldeActionRoute(pump: IDashboardTableData) {
+        if(pump.Status === 'Open') {
+            this.router.navigateByUrl('/action', {state: {pump: pump, action: 'Close'}})
+        } else if(pump.Status === 'Closed') {
+            console.log("in if");
+            // this.router.navigate(['/action', pump.PumpNo, 'Open']);
+            this.router.navigateByUrl('/action', {state: {pump: pump, action: 'Open'}})
+        }
     }
 
-    public handleRoute(route: String,pump: any) {
+    public handleRoute(route: String,pump: IDashboardTableData) {
         switch(route) {
             case ('credit'):
                 this.router.navigate(['/pages/credit', pump.PumpNo]);

@@ -4,19 +4,20 @@
         <div class="row">
             <mat-form-field>
                 <mat-label>Expense Name</mat-label>
-                <input matInput placeholder="Enter Customer">
+                <input matInput placeholder="Enter ExpName"  [(ngModel)]="expense.expenseName" name="ExpName">
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Amount</mat-label>
-                <input matInput type="number" placeholder="Enter Amount">
+                <input matInput type="number" placeholder="Enter Amount" [(ngModel)]="expense.ExpAmount" name="ExpAmount">
             </mat-form-field>
         </div>
         <div class="row">
             <mat-form-field>
-                <mat-label>Mode</mat-label>
-                <input matInput placeholder="Enter Product">
+                <mat-label>Particulars</mat-label>
+                <input matInput placeholder="Enter Particulars" [(ngModel)]="expense.particulars" name="particulars">
             </mat-form-field>
         </div>
     </div>
-    <button mat-flat-button color="warn">Save</button>
+    <button mat-flat-button color="primary" (click)="SaveExp()">Save</button>
+    
 </section>
